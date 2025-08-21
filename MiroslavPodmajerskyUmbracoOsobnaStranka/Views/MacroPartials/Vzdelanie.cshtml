@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using MiroslavPodmajerskyUmbracoOsobnaStranka.lib.Models
+
+@{ 
+    VzdelanieModel vzdelanieModel = new VzdelanieModel();
+    vzdelanieModel.ZakladnaSkola = "Senica";
+    vzdelanieModel.StrednaSkola = "SVCHT Valšské Meziříč";
+    vzdelanieModel.VysokaSkola = "VVŠ Vyškov";
+}
+<div class="telo">
+    <h1>Vzdelanie</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Základná škola</h2>
+            <p>@vzdelanieModel.ZakladnaSkola</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Stredná škola</h2>
+            <p>@vzdelanieModel.StrednaSkola</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Vysoká škola</h2>
+            <p>@vzdelanieModel.VysokaSkola</p>
+        </div>
+    </div>
+
+    <h2>Kutzy a certifikáty</h2>
+    <div class="row">
+        @foreach (string nazovKurzu in vzdelanieModel.ZoznamKurzov.zoznamKurzov)
+        {
+            <div class="col-md-3">
+                <strong>@nazovKurzu</strong>
+            </div>
+        }
+    </div>
+</div>
